@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+      <h1>Car List</h1>
+      <a href="{% url 'add_elec_car' %}" class=' btn btn-success'>Add electric Car</a>
+      <a href="{% url 'add_gas_car' %}" class=' btn btn-success'>Add Gas Car</a>
+
+  <ul>
+  {% if Ecars %}
+    {% for car in Ecars %}
+      <li>
+        {{ car.name }} - {{ car.model }} - {{ car.year }}
+        {% if car.battery_capacity %}
+          - Battery Capacity: {{ car.battery_capacity }} kWh
+        {% elif car.fuel_efficiency %}
+          - Fuel Efficiency: {{ car.fuel_efficiency }} MPG
+        {% endif %}
+      </li>
+    {% endfor %}
+   {% endif %}
+  </ul>
+  <ul>
+  {% if Gcars %}
+    {% for car in Gcars %}
+      <li>
+        {{ car.name }} - {{ car.model }} - {{ car.year }}
+        {% if car.battery_capacity %}
+          - Battery Capacity: {{ car.battery_capacity }} kWh
+        {% elif car.fuel_efficiency %}
+          - Fuel Efficiency: {{ car.fuel_efficiency }} MPG
+        {% endif %}
+      </li>
+    {% endfor %}
+   {% endif %}
+  </ul>
+</body>
+</html>
